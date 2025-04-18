@@ -6,7 +6,13 @@ import type { BlogPost as BlogPostType } from '../../types/blog';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function AuthorPage({ params }: { params: { name: string } }) {
+type AuthorPageProps = {
+  params: {
+    name: string;
+  };
+};
+
+export default function AuthorPage({ params }: AuthorPageProps) {
   const authorName = params.name.charAt(0).toUpperCase() + params.name.slice(1);
   const authorPosts = samplePosts.filter((post: BlogPostType) => 
     post.author.toLowerCase() === authorName.toLowerCase()
@@ -19,12 +25,12 @@ export default function AuthorPage({ params }: { params: { name: string } }) {
   const authorImage = authorPosts[0].authorImage;
 
   return (
-    <div className="min-h-screen bg-[#1e3a2b] text-[#f5f5f5]">
+    <div className="min-h-screen bg-white text-black">
       <Navbar />
       <div className="bg-[#315c40] py-12 border-b border-[#588068]/30">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-            <div className="relative h-32 w-32 overflow-hidden rounded-full border-4 border-[#8eba92]/50 shadow-xl animate-pulse-slow">
+            <div className="relative h-32 w-32 overflow-hidden rounded-full border-4 border-white/50 shadow-xl animate-pulse-slow">
               <Image 
                 src={authorImage} 
                 alt={`${authorName}'s profile`} 
@@ -32,13 +38,13 @@ export default function AuthorPage({ params }: { params: { name: string } }) {
                 sizes="128px"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#1e3a2b]/30 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#315c40]/30 to-transparent"></div>
             </div>
             <div className="text-center sm:text-left animate-fadeIn">
-              <h1 className="text-4xl font-bold mb-2 text-[#f5f5f5]">
+              <h1 className="text-4xl font-bold mb-2 text-white">
                 {authorName}'s Blog
               </h1>
-              <p className="text-[#f5f5f5]/80 text-lg max-w-xl">
+              <p className="text-white/80 text-lg max-w-xl">
                 Environmental perspectives and insights from {authorName}
               </p>
             </div>
@@ -46,33 +52,33 @@ export default function AuthorPage({ params }: { params: { name: string } }) {
         </div>
       </div>
       
-      <main className="py-12 px-4 sm:px-6 lg:px-8">
+      <main className="py-12 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-5xl mx-auto">
-          <div className="bg-[#315c40] rounded-lg p-6 mb-8 shadow-md border border-[#588068]/50">
-            <h2 className="text-2xl font-bold text-[#f5f5f5] mb-2">About {authorName}</h2>
-            <p className="text-[#f5f5f5]/90">
+          <div className="bg-white rounded-lg p-6 mb-8 shadow-md border-l-4 border-[#315c40] border-t border-r border-b border-gray-200">
+            <h2 className="text-2xl font-bold text-[#315c40] mb-2">About {authorName}</h2>
+            <p className="text-black/90">
               {authorName} is passionate about exploring the intersection of technology and environmental sustainability. 
               Through thoughtful writing and research, {authorName} shares insights on how we can build a more 
               sustainable digital future.
             </p>
           </div>
           
-          <h2 className="text-2xl font-bold text-[#f5f5f5] mb-6 border-b border-[#588068]/50 pb-2">
+          <h2 className="text-2xl font-bold text-[#315c40] mb-6 border-b-2 border-[#315c40]/30 pb-2">
             Articles by {authorName}
           </h2>
           
           <div className="space-y-8">
             {authorPosts.map((post: BlogPostType) => (
-              <BlogPost key={post.id} post={post} isPreview={true} />
+              <BlogPost key={post.id} post={post} isPreview={false} />
             ))}
           </div>
           
           <div className="mt-8">
             <Link 
               href="/"
-              className="group relative inline-flex items-center px-4 py-2 text-sm font-medium overflow-hidden rounded-md text-[#f5f5f5] bg-[#1e3a2b] border border-[#588068]/50"
+              className="group relative inline-flex items-center px-4 py-2 text-sm font-medium overflow-hidden rounded-md text-white bg-[#315c40] border border-gray-200"
             >
-              <span className="relative flex items-center gap-2 group-hover:text-[#8eba92] transition-colors duration-300">
+              <span className="relative flex items-center gap-2 group-hover:text-white/80 transition-colors duration-300">
                 <svg 
                   className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform duration-300" 
                   fill="none" 
@@ -88,10 +94,10 @@ export default function AuthorPage({ params }: { params: { name: string } }) {
         </div>
       </main>
       
-      <footer className="bg-[#315c40] text-[#f5f5f5] py-8 mt-12 border-t border-[#588068]/30">
+      <footer className="bg-[#f5f5f5] text-[#315c40] py-8 mt-12 border-t border-gray-200">
         <div className="max-w-5xl mx-auto px-4 text-center">
-          <p>© 2024 ESPM 50AC Final Project</p>
-          <p className="text-[#8eba92] mt-2">Built with Next.js and Tailwind CSS</p>
+          <p className="font-medium">© 2024 ESPM 50AC Final Project</p>
+          <p className="text-black/70 mt-2">Built with Next.js and Tailwind CSS</p>
         </div>
       </footer>
     </div>
