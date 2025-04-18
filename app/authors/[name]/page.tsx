@@ -6,13 +6,16 @@ import type { BlogPost as BlogPostType } from '../../types/blog';
 import Link from 'next/link';
 import Image from 'next/image';
 
-type AuthorPageProps = {
-  params: {
-    name: string;
-  };
+type Params = {
+  name: string;
 };
 
-export default function AuthorPage({ params }: AuthorPageProps) {
+export default function AuthorPage({
+  params,
+}: {
+  params: Params;
+  searchParams: Record<string, string | string[] | undefined>;
+}) {
   const authorName = params.name.charAt(0).toUpperCase() + params.name.slice(1);
   const authorPosts = samplePosts.filter((post: BlogPostType) => 
     post.author.toLowerCase() === authorName.toLowerCase()
