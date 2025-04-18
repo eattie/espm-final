@@ -88,6 +88,9 @@ export default function BlogPost({ post, isPreview = false }: BlogPostProps) {
                         View Source →
                       </a>
                     )}
+                    {item.annotation && (
+                      <p className="mt-2 text-black/80">{item.annotation}</p>
+                    )}
                   </li>
                 ))}
               </ul>

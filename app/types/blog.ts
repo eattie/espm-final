@@ -3,7 +3,8 @@ export type BibliographyItem = {
   year: string;
   title: string;
   source: string;
-  link: string;
+  link?: string;
+  annotation?: string;
 };
 
 export type BlogPost = {
