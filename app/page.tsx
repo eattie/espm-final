@@ -79,27 +79,16 @@ export default function Home() {
     <div className="min-h-screen bg-white text-black">
       <Navbar />
       
-      <div className="bg-[#315c40] py-16 border-b border-[#588068]/30">
+      <div className="bg-[#315c40] py-12 border-b border-[#588068]/30">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="animate-fadeIn">
-            <h1 className="text-5xl font-bold mb-4 text-white">ESPM 50AC Final</h1>
-            <p className="text-xl max-w-2xl mx-auto text-white/90">
-              Exploring the intersection of technology, sustainability, and environmental consciousness
-            </p>
+            <h1 className="text-5xl font-bold mb-4 text-white">ESPM 50AC Final Project</h1>
           </div>
         </div>
       </div>
       
       <main className="py-12 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-5xl mx-auto">
-          <div className="bg-white rounded-lg p-6 mb-8 shadow-md border-l-4 border-[#315c40] border-t border-r border-b border-gray-200">
-            <h2 className="text-2xl font-bold text-[#315c40] mb-2">Welcome to our ESPM 50AC Blog!</h2>
-            <p className="text-black/90">
-              This blog showcases our final project, exploring environmental themes through technology.
-              Each post reflects our perspectives on sustainability in the digital age.
-            </p>
-          </div>
-        
           <h2 className="text-3xl font-bold text-[#315c40] mb-8 text-center border-b-2 border-[#315c40]/30 pb-4">
             Latest Articles
           </h2>

@@ -57,15 +57,6 @@ export default function AuthorPage({
       
       <main className="py-12 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-5xl mx-auto">
-          <div className="bg-white rounded-lg p-6 mb-8 shadow-md border-l-4 border-[#315c40] border-t border-r border-b border-gray-200">
-            <h2 className="text-2xl font-bold text-[#315c40] mb-2">About {authorName}</h2>
-            <p className="text-black/90">
-              {authorName} is passionate about exploring the intersection of technology and environmental sustainability. 
-              Through thoughtful writing and research, {authorName} shares insights on how we can build a more 
-              sustainable digital future.
-            </p>
-          </div>
-          
           <h2 className="text-2xl font-bold text-[#315c40] mb-6 border-b-2 border-[#315c40]/30 pb-2">
             Articles by {authorName}
           </h2>
