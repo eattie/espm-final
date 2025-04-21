@@ -47,9 +47,6 @@ export default function AuthorPage({
               <h1 className="text-4xl font-bold mb-2 text-white">
                 {authorName}'s Blog
               </h1>
-              <p className="text-white/80 text-lg max-w-xl">
-                Environmental perspectives and insights from {authorName}
-              </p>
             </div>
           </div>
         </div>
