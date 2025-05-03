@@ -15,7 +15,7 @@ export default function PostPage({ params }: { params: { id: string } }) {
     <div className="min-h-screen bg-[#1e3a2b] text-[#f5f5f5]">
       <Navbar />
       <main className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <BlogPost post={post} isPreview={false} />
           <div className="mt-8">
             <Link 
@@ -39,7 +39,7 @@ export default function PostPage({ params }: { params: { id: string } }) {
       </main>
       
       <footer className="bg-[#315c40] text-[#f5f5f5] py-8 mt-12 border-t border-[#588068]/30">
-        <div className="max-w-5xl mx-auto px-4 text-center">
+        <div className="max-w-6xl mx-auto px-4 text-center">
           <p>© 2024 ESPM 50AC Final Project</p>
           <p className="text-[#8eba92] mt-2">Built with Next.js and Tailwind CSS</p>
         </div>
