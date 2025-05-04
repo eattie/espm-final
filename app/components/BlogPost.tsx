@@ -39,12 +39,26 @@ const getImageForSection = (postId: string, sectionIndex: number): string => {
     if (sectionIndex === 3) return "/photos/etai4.jpg";   // Etai4
   }
   
-  // For second article (Jimmy's article)
+  // For second article (Jimmy's original article)
   if (postId === "2") {
     if (sectionIndex === 0) return "/photos/jimmyFirst.jpg";  // Jimmy1
     if (sectionIndex === 1) return "/photos/jimmyTwo.png";    // Jimmy2 (swapped)
     if (sectionIndex === 2) return "/photos/jimmyTwo.jpg";    // Jimmy3 (swapped)
     if (sectionIndex === 3) return "/photos/jimmy4.jpeg";     // Jimmy4
+  }
+  
+  // For Jimmy's new article (id: 3)
+  if (postId === "3") {
+    if (sectionIndex === 0) return "/photos/jimmy_article2_pic1.jpg";
+    if (sectionIndex === 1) return "/photos/jimmy_article2_pic2.jpg";
+    if (sectionIndex === 2) return "/photos/jimmy_article2_pic3.jpg";
+  }
+  
+  // For Etai's new article (id: 4)
+  if (postId === "4") {
+    if (sectionIndex === 0) return "/photos/etai_article2_pic1.jpg";
+    if (sectionIndex === 1) return "/photos/etai_article2_pic2.jpg";
+    if (sectionIndex === 2) return "/photos/etai_article2_pic3.jpg";
   }
   
   // Default placeholder for other sections
@@ -195,27 +209,31 @@ export default function BlogPost({ post, isPreview = false }: BlogPostProps) {
             <div className="mt-4 p-4 bg-[#f5f5f5] rounded-lg border border-gray-200 animate-slideUp">
               <h3 className={`text-xl font-bold text-[#315c40] mb-3 ${headingFontClass}`}>Bibliography</h3>
               <ul className="space-y-3">
-                {post.bibliography.map((item: BibliographyItem, index: number) => (
-                  <li key={index} className={`text-black/90 text-sm ${bodyFontClass}`}>
-                    <p className="mb-1">
-                      <span className="font-semibold">{item.author}</span> ({item.year}). {item.title}.
-                    </p>
-                    <p className={`italic ${accentFontClass} text-xs`}>{item.source}</p>
-                    {item.link && (
-                      <a 
-                        href={item.link} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-[#315c40] hover:text-black transition-colors text-xs mt-1 inline-block font-medium"
-                      >
-                        View Source →
-                      </a>
-                    )}
-                    {item.annotation && (
-                      <p className="mt-2 text-black/80">{item.annotation}</p>
-                    )}
-                  </li>
-                ))}
+                {post.bibliography.map((item: BibliographyItem, index: number) => {
+                  // MLA formatting logic
+                  let mla = '';
+                  if (item.source && item.source.toLowerCase().includes('journal')) {
+                    // Journal article
+                    mla = `${item.author}. "${item.title}." ${item.source}, ${item.year}${item.link ? ", " + item.link : ''}.`;
+                  } else if (item.source && (item.source.toLowerCase().includes('press') || item.source.toLowerCase().includes('university'))) {
+                    // Book
+                    mla = `${item.author}. ${item.title}. ${item.source}, ${item.year}${item.link ? ", " + item.link : ''}.`;
+                  } else if (item.link) {
+                    // Website or organization
+                    mla = `${item.author}. "${item.title}." ${item.source ? item.source + ', ' : ''}${item.year}, ${item.link}.`;
+                  } else {
+                    // Fallback
+                    mla = `${item.author}. ${item.title}. ${item.source ? item.source + ', ' : ''}${item.year}.`;
+                  }
+                  return (
+                    <li key={index} className={`text-black/90 text-sm ${bodyFontClass}`}>
+                      <p className="mb-1">{mla}</p>
+                      {item.annotation && (
+                        <p className="mt-2 text-black/80">{item.annotation}</p>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           )}
