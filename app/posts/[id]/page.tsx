@@ -40,7 +40,7 @@ export default function PostPage({ params }: { params: { id: string } }) {
       
       <footer className="bg-[#315c40] text-[#f5f5f5] py-8 mt-12 border-t border-[#588068]/30">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <p>© 2024 ESPM 50AC Final Project</p>
+          <p>© 2025 ESPM 50AC Final Project</p>
           <p className="text-[#8eba92] mt-2">Built with Next.js and Tailwind CSS</p>
         </div>
       </footer>

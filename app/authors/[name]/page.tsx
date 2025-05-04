@@ -87,7 +87,7 @@ export default function AuthorPage({
       
       <footer className="bg-[#f5f5f5] text-[#315c40] py-8 mt-12 border-t border-gray-200">
         <div className="max-w-5xl mx-auto px-4 text-center">
-          <p className="font-medium">© 2024 ESPM 50AC Final Project</p>
+          <p className="font-medium">© 2025 ESPM 50AC Final Project</p>
           <p className="text-black/70 mt-2">Built with Next.js and Tailwind CSS</p>
         </div>
       </footer>
